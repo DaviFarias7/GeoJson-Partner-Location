@@ -8,11 +8,12 @@ import {
   useMap,
 } from 'react-leaflet';
 import axios from 'axios';
+import Select from 'react-select';
 import 'leaflet/dist/leaflet.css';
 
 const MapComponent = () => {
   const [partners, setPartners] = useState([]);
-  const [searchId, setSearchId] = useState('');
+  const [searchValue, setSearchValue] = useState(null);
   const [selectedPartner, setSelectedPartner] = useState(null);
 
   useEffect(() => {
@@ -31,20 +32,28 @@ const MapComponent = () => {
     fetchData();
   }, []);
 
-  const handleSearch = async () => {
-    if (!searchId) return;
-
-    try {
-      const response = await axios.get(
-        `http://localhost:8080/partners/${searchId}`,
-      );
-      console.log('Data received for ID:', response.data);
-      setSelectedPartner(response.data);
-    } catch (error) {
-      console.error('Error fetching partner by ID:', error);
+  const handleSearchChange = async (selectedOption) => {
+    setSearchValue(selectedOption);
+    if (selectedOption) {
+      try {
+        const response = await axios.get(
+          `http://localhost:8080/partners/${selectedOption.value}`,
+        );
+        console.log('Data received for ID:', response.data);
+        setSelectedPartner(response.data);
+      } catch (error) {
+        console.error('Error fetching partner by ID:', error);
+        setSelectedPartner(null);
+      }
+    } else {
       setSelectedPartner(null);
     }
   };
+
+  const options = partners.map((partner) => ({
+    value: partner.id,
+    label: partner.tradingName,
+  }));
 
   const SearchComponent = ({ partner }) => {
     const map = useMap();
@@ -62,20 +71,33 @@ const MapComponent = () => {
   };
 
   return (
-    <div>
-      <div style={{ marginBottom: '10px' }}>
-        <input
-          type="text"
-          value={searchId}
-          onChange={(e) => setSearchId(e.target.value)}
-          placeholder="Enter partner ID"
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}
+    >
+      <div
+        style={{
+          marginTop: '20px',
+          marginBottom: '20px',
+          width: '80%',
+          zIndex: 999,
+        }}
+      >
+        <Select
+          value={searchValue}
+          onChange={handleSearchChange}
+          options={options}
+          placeholder="Search for a partner..."
+          isClearable
         />
-        <button onClick={handleSearch}>Buscar</button>
       </div>
       <MapContainer
         center={[-23.55, -46.64]}
-        zoom={12}
-        style={{ height: '80vh', width: '100%' }}
+        zoom={3}
+        style={{ height: '80vh', width: '80%', zIndex: -999 }}
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
