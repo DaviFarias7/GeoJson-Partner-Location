@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import { getPartners } from '../services/api';
+import axios from 'axios';
 
 const MapComponent = () => {
   const [partners, setPartners] = useState([]);
@@ -9,9 +9,10 @@ const MapComponent = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await getPartners();
-        console.log('Data received from API:', data); // Adicione este log
-        setPartners(data);
+        const response = await axios.get(
+          'http://localhost:8080/partners/getAll',
+        );
+        setPartners(response.data);
       } catch (error) {
         console.error('Error fetching partners:', error);
       }
@@ -22,22 +23,33 @@ const MapComponent = () => {
 
   return (
     <MapContainer
-      center={[-22.9, -43.2]}
-      zoom={5}
+      center={[-23.55, -46.64]}
+      zoom={12}
       style={{ height: '100vh', width: '100%' }}
     >
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
       />
-      {partners.map((pdv) => (
-        <React.Fragment key={pdv.id}>
+      {partners.map((partner) => (
+        <React.Fragment key={partner.id}>
           <Marker
-            position={[pdv.address.coordinates[1], pdv.address.coordinates[0]]}
+            position={[
+              partner.address.coordinates[1],
+              partner.address.coordinates[0],
+            ]}
           >
-            <Popup>{pdv.tradingName}</Popup>
+            <Popup>{partner.tradingName}</Popup>
           </Marker>
-          <GeoJSON data={pdv.coverageArea} />
+          <GeoJSON
+            data={partner.coverageArea}
+            style={{
+              fillColor: 'blue',
+              fillOpacity: 0.2,
+              color: 'blue',
+              weight: 2,
+            }}
+          />
         </React.Fragment>
       ))}
     </MapContainer>
