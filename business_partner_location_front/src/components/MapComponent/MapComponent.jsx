@@ -87,6 +87,7 @@ const MapComponent = () => {
         }}
       >
         <Select
+          styles={{ zIndex: 999 }}
           value={searchValue}
           onChange={handleSearchChange}
           options={options}
@@ -97,7 +98,7 @@ const MapComponent = () => {
       <MapContainer
         center={[-23.55, -46.64]}
         zoom={3}
-        style={{ height: '80vh', width: '80%', zIndex: -999 }}
+        style={{ height: '80vh', width: '80%' }}
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
