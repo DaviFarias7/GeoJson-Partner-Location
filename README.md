@@ -93,9 +93,40 @@ Foi criado um serviço backend que disponibiliza uma API REST para gerenciar par
 ## Requisitos
 - Java 11 ou superior
 - MongoDB
+- MongoDB Compass
 - Spring Boot
 - Dependência Spring Data MongoDB
 - Dependência Spring Web
+
+## Criando o banco de dados no MongoDB Compass
+
+Abra o MongoDB Compass:
+
+- Inicie o MongoDB Compass e conecte-se ao seu servidor MongoDB.
+Criar uma Nova Database:
+
+- No painel de navegação à esquerda, clique em "Create Database".
+
+- Na janela que aparece, forneça um nome para a sua database: partners_db.
+- Especifique um nome para a coleção inicial: partners.
+Clique em "Create Database".
+
+No MongoDB Compass, você pode executar consultas diretamente na interface para listar os documentos da sua coleção. Aqui estão os passos para executar uma query que lista todos os partners na coleção partners:
+
+Passos para Executar uma Query no MongoDB Compass
+Abra o MongoDB Compass e conecte-se ao seu servidor MongoDB.
+
+- Navegue até a database onde a sua coleção partners está localizada:
+
+- No painel à esquerda, expanda o nome do seu servidor para ver as databases.
+- Clique na database apropriada (por exemplo, partners_db).
+- Selecione a coleção partners:
+- Na database selecionada, clique na coleção partners.
+- Abrir a aba de consultas (Queries):
+- Na barra superior, clique na aba "Documents" para visualizar os documentos da coleção.
+- Executar a Query:
+- Na aba "Documents", você verá um campo de texto chamado "Filter". Este campo é onde você pode inserir a sua query.
+- Para listar todos os documentos, basta inserir um objeto vazio {} no campo de "Filter" e clicar no botão "Find".
 
 ## Executando o Serviço Localmente
 
