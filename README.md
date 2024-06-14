@@ -88,7 +88,7 @@ Esses são os atributos de qualidade que esperamos que você atenda:
 Foi criado um serviço backend que disponibiliza uma API REST para gerenciar parceiros utilizando o Spring Boot para agilizar o desenvolvimento e o MongoDB como banco de dados, pois ele suporta facilmente tipos de dados GeoJSON.
 
 
-## Backend
+## <img align="center" alt="Alan-CSS" height="30" width="40" src="https://github.com/tandpfun/skill-icons/blob/main/icons/Spring-Dark.svg"> Backend
 
 ## Requisitos
 - Java 11 ou superior
@@ -149,15 +149,15 @@ OBS: Endpoints acessíveis via Swagger(Suba a aplicação e acesse este link): h
 
 Para colocar em produção, você pode usar qualquer plataforma de sua escolha. Certifique-se de configurar corretamente as variáveis de ambiente para o MongoDB.
 
-# Frontend
+# <img align="center" alt="Alan-CSS" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/react/react-original.svg"> Frontend
 
 Criei o Frontend com React utilizando a biblioteca React Leaflet para renderizar a localização dos parceiros no mapa.
 
 ## Requisitos
 - NodeJs 10 ou superior
 - React 18.3.1
-- react-leaflet": 4.2.1 ou superior
-- eact-select": 5.8.0 ou superior
+- React Leaflet: 4.2.1 ou superior
+- React Select: 5.8.0 ou superior
 
 ## Executando o Serviço Localmente
 
