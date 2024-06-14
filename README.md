@@ -46,8 +46,6 @@ Salvar no banco de dados **todas** as seguintes informações representadas por 
 4. O campo `id` deve ser único entre os parceiros, mas não necessariamente um número inteiro;
 
 Você pode usar esse arquivo [JSON](files/pdvs.json) com centenas de informações de parceiros que geramos para você testar o seu serviço — **não** esperamos que estes parceiros estejam pré carregados em sua base de dados.
-Abaixo, você pode ver como estes parceiros são representados em um mapa:
-![parceiros em um mapa](files/images/pdvs.png)
 
 ### 1.2. Carregar parceiro pelo `id`:
 Retornar um parceiro específico baseado no seu campo `id` com todos os campos apresentados acima.
@@ -59,27 +57,6 @@ Dada uma localização pelo usuário da API (coordenadas `long` e `lat`), procur
 * Você tem liberdade para escolher a linguagem de programação e o mecanismo de base de dados da sua preferência;
 * O seu projeto deve ser **multi-plataforma**;
 * Você deve escrever um arquivo de documentação (`README.md`) explicando como executar o seu serviço **localmente** e como colocá-lo em produção (*foque na simplicidade e não se esqueça que iremos testar seu serviço por nossa própria conta, sem qualquer assistência sua*).
-
-## Método de Avaliação
-
-Vamos avaliar seu teste baseado em uma série de [atributos de qualidade](https://en.wikipedia.org/wiki/List_of_system_quality_attributes).
-Consideramos corretude um atributo essencial, desclassificando seu teste caso o mesmo não esteja 100% de acordo.
-Os outros, como não podem ser avaliados de maneira objetiva, não podem desclassifica-lo sozinhos.
-Esses são os atributos de qualidade que esperamos que você atenda:
-- **Corretude:** O seu código deve seguir **todos** os requerimentos apresentados no item [1.](#1-o-que-queremos-que-você-faça);
-- **Performance:** Quanto mais parceiros na base de dados e mais rápido você conseguir buscar, melhor;
-- **Testabilidade:** Quão testado e quão fácil é adicionar novos testes ao seu código;
-- **Manutenibilidade:** Quão fácil é adicionar novas funcionalidades no seu código;
-- **Separação de conceitos:** (https://en.wikipedia.org/wiki/Separation_of_concerns)
-
-## Como Entregar
-
-- Coloque seu código em um **repositório privado no Github** e adicione o @ze-engineering-code-challenge como um de seus colaboradores.
-
-
-  Essa conta no Github (@ze-engineering-code-challenge) é utilizada exclusivamente pelos engenheiros do Zé para baixar o seu código e revisá-lo.
-- **Após finalizar o desafio, por favor submeta as informações por meio deste formulário:**
-  https://docs.google.com/forms/d/e/1FAIpQLSePVCWxsHZHoRqJY9-XFJHuL7iOjO00sfhZksLBmDbR0KuoLg/viewform
 
 # Fim do desafio
 
@@ -127,6 +104,8 @@ Abra o MongoDB Compass e conecte-se ao seu servidor MongoDB.
 - Executar a Query:
 - Na aba "Documents", você verá um campo de texto chamado "Filter". Este campo é onde você pode inserir a sua query.
 - Para listar todos os documentos, basta inserir um objeto vazio {} no campo de "Filter" e clicar no botão "Find".
+
+![Mongo](https://github.com/DaviFarias7/GeoJson-Partner-Location/assets/86566715/de7299a4-65b2-4275-ba39-15a51e6b2156)
 
 ## Executando o Serviço Localmente
 
